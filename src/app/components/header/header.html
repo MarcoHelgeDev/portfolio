@@ -1,0 +1,78 @@
+<header class="header">
+  <div class="header__inner">
+    <div class="header__left">
+      <div class="language-toggle" aria-label="Language switch">
+        <button
+          type="button"
+          [class.is-active]="activeLanguage === 'en'"
+          (click)="setLanguage('en')"
+        >
+          EN
+        </button>
+
+        <button
+          type="button"
+          [class.is-active]="activeLanguage === 'de'"
+          (click)="setLanguage('de')"
+        >
+          DE
+        </button>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#about">About me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
+
+    <a class="logo" href="#hero" aria-label="Go to hero section" (click)="closeMenu()">
+      <span class="logo__mark">M</span>
+
+      <span class="logo__text">
+        <span>Marco-Helge</span>
+        <span>Alsen</span>
+      </span>
+    </a>
+
+    <button
+      class="burger-button"
+      type="button"
+      aria-label="Open menu"
+      [class.is-open]="isMenuOpen"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="mobile-menu" [class.is-open]="isMenuOpen">
+      <div class="mobile-menu__inner">
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="#about" (click)="closeMenu()">About me</a>
+          <a href="#skills" (click)="closeMenu()">Skills</a>
+          <a href="#projects" (click)="closeMenu()">Projects</a>
+        </nav>
+
+        <div class="language-toggle language-toggle--mobile" aria-label="Mobile language switch">
+          <button
+            type="button"
+            [class.is-active]="activeLanguage === 'en'"
+            (click)="setLanguage('en')"
+          >
+            EN
+          </button>
+
+          <button
+            type="button"
+            [class.is-active]="activeLanguage === 'de'"
+            (click)="setLanguage('de')"
+          >
+            DE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
