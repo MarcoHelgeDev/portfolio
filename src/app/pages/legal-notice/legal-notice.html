@@ -1,1 +1,54 @@
-<p>legal-notice works!</p>
+<section class="legal-notice">
+  <app-header></app-header>
+
+  <a class="legal-notice__back" routerLink="/" [attr.aria-label]="legalTexts.backAriaLabel">←</a>
+
+  <main class="legal-notice__content">
+    <div class="legal-notice__headline">
+      <h1>{{ legalTexts.title }}</h1>
+    </div>
+
+    <div class="legal-notice__text">
+      <div class="legal-notice__imprint">
+        <h2>{{ legalTexts.imprintTitle }}</h2>
+
+        <div class="legal-notice__imprint-body">
+          <ul>
+            @for (item of legalTexts.imprintItems; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+
+          <p>{{ legalTexts.projectName }}</p>
+          <p>
+            {{ legalTexts.emailLabel }}:
+            <a href="mailto:webdev-acc@proton.me">webdev-acc@proton.me</a>
+          </p>
+        </div>
+      </div>
+
+      @for (section of legalTexts.sections; track section.title) {
+        <article class="legal-notice__section">
+          <h2>{{ section.title }}</h2>
+
+          @for (paragraph of section.paragraphs; track paragraph) {
+            <p>{{ paragraph }}</p>
+          }
+        </article>
+      }
+
+      <article class="legal-notice__section">
+        <h2>{{ legalTexts.contactSectionTitle }}</h2>
+
+        <p>
+          {{ legalTexts.contactText }}
+          <a href="mailto:webdev-acc@proton.me">webdev-acc@proton.me</a>.
+        </p>
+
+        <p>{{ legalTexts.date }}</p>
+      </article>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</section>

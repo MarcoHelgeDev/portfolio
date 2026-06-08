@@ -1,20 +1,18 @@
-<section class="about-me">
+<section class="about-me" id="about-me">
   <div class="about-me__inner">
-    <div class="about-me__photo-wrapper" aria-label="Profile photo">
+    <div class="about-me__photo-wrapper" [attr.aria-label]="aboutTexts.photoAriaLabel">
       <div class="about-me__photo"></div>
     </div>
 
     <div class="about-me__content">
-      <p class="about-me__label">Who I Am</p>
+      <p class="about-me__label">{{ aboutTexts.label }}</p>
 
       <article class="about-me__card">
-        <h2>About me</h2>
+        <h2>{{ aboutTexts.title }}</h2>
 
         <div class="about-me__text-content">
           <p class="about-me__intro">
-            Hey there, I'm Marco! Write some information about yourself that is IT related. Why are
-            you passionate about coding? What is your source of inspiration for improving your
-            programming skills?
+            {{ aboutTexts.intro }}
           </p>
 
           <div class="about-me__highlights">
@@ -28,8 +26,7 @@
               </span>
 
               <p>
-                Where are you based? Would you be open to working remotely or potentially
-                relocating?
+                {{ aboutTexts.location }}
               </p>
             </div>
 
@@ -43,8 +40,7 @@
               </span>
 
               <p>
-                Show that you are open-minded. Are you enthusiastic about learning new technologies
-                and continually improving your skills?
+                {{ aboutTexts.mindset }}
               </p>
             </div>
 
@@ -58,9 +54,7 @@
               </span>
 
               <p>
-                A brief description of your problem-solving approach. Do you learn from each
-                challenge as you search for the most efficient or elegant solution? You can include
-                some keywords like: analytical thinking, creativity, persistence and collaboration.
+                {{ aboutTexts.problemSolving }}
               </p>
             </div>
           </div>

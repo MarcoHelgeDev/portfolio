@@ -1,1 +1,116 @@
-<p>contact works!</p>
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div class="contact__box">
+      <div class="contact__headline">
+        <p>{{ contactTexts.label }}</p>
+        <h2>{{ contactTexts.title }}</h2>
+      </div>
+
+      <div class="contact__text-block">
+        <h3>{{ contactTexts.problemHeadline }}</h3>
+
+        <p>
+          {{ contactTexts.description }}
+          <br />
+          <br />
+          {{ contactTexts.question }}
+          <a href="mailto:webdev-acc@proton.me">{{ contactTexts.talkLink }}</a>
+        </p>
+      </div>
+    </div>
+
+    <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="sendMessage()" novalidate>
+      <div class="contact__fields">
+        <label class="contact__field" [class.is-invalid]="isInvalid('name')" for="contact-name">
+          <span class="contact__field-title">{{ contactTexts.nameLabel }}</span>
+
+          <input
+            id="contact-name"
+            class="contact__control"
+            type="text"
+            [placeholder]="contactTexts.namePlaceholder"
+            autocomplete="name"
+            formControlName="name"
+          />
+
+          <span class="contact__error">{{ getNameError() }}</span>
+        </label>
+
+        <label class="contact__field" [class.is-invalid]="isInvalid('email')" for="contact-email">
+          <span class="contact__field-title">{{ contactTexts.emailLabel }}</span>
+
+          <input
+            id="contact-email"
+            class="contact__control"
+            type="email"
+            [placeholder]="contactTexts.emailPlaceholder"
+            autocomplete="email"
+            formControlName="email"
+          />
+
+          <span class="contact__error">{{ getEmailError() }}</span>
+        </label>
+
+        <label
+          class="contact__field contact__field--message"
+          [class.is-invalid]="isInvalid('message')"
+          for="contact-message"
+        >
+          <span class="contact__field-title">{{ contactTexts.messageLabel }}</span>
+
+          <textarea
+            id="contact-message"
+            class="contact__control contact__control--textarea"
+            [placeholder]="contactTexts.messagePlaceholder"
+            autocomplete="off"
+            formControlName="message"
+          ></textarea>
+
+          <span class="contact__error">{{ getMessageError() }}</span>
+        </label>
+      </div>
+
+      <div class="contact__privacy-area">
+        <div class="contact__privacy-frame">
+          <label class="privacy-check" [class.is-invalid]="isInvalid('privacy')">
+            <input type="checkbox" formControlName="privacy" />
+
+            <span class="privacy-check__box" aria-hidden="true"></span>
+
+            <span class="privacy-check__text">
+              <span>{{ contactTexts.privacyStart }}</span>
+              <a routerLink="/privacy-policy">{{ contactTexts.privacyLink }}</a>
+              <span>{{ contactTexts.privacyEnd }}</span>
+            </span>
+          </label>
+
+          <span class="contact__privacy-error">
+            @if (isInvalid('privacy')) {
+              {{ contactTexts.errors.privacy }}
+            }
+          </span>
+        </div>
+
+        <button class="contact__button" type="submit" [disabled]="contactForm.invalid || isSending">
+          <span>
+            @if (isSending) {
+              {{ contactTexts.sendingButton }}
+            } @else {
+              {{ contactTexts.submitButton }}
+            }
+          </span>
+        </button>
+
+        <span
+          class="contact__feedback"
+          [class.contact__feedback--success]="submitWasSuccessful"
+          [class.contact__feedback--error]="submitMessage && !submitWasSuccessful"
+        >
+          @if (submitMessage) {
+            {{ submitMessage }}
+          }
+        </span>
+      </div>
+    </form>
+  </div>
+</section>

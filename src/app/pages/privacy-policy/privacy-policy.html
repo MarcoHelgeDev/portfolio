@@ -1,1 +1,119 @@
-<p>privacy-policy works!</p>
+<section class="privacy-policy">
+  <app-header></app-header>
+
+  <a class="privacy-policy__back" routerLink="/" [attr.aria-label]="privacyTexts.backAriaLabel">
+    ←
+  </a>
+
+  <main class="privacy-policy__content">
+    <div class="privacy-policy__headline">
+      <h1>{{ privacyTexts.title }}</h1>
+    </div>
+
+    <div class="privacy-policy__text">
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.privacyAtGlanceTitle }}</h2>
+
+        <p>{{ privacyTexts.privacyAtGlanceText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.responsibleTitle }}</h2>
+
+        <p>
+          {{ privacyTexts.responsibleIntro }}
+          <br />
+          <br />
+          {{ privacyTexts.responsibleName }}
+          <br />
+          {{ privacyTexts.responsibleAddress }}
+          <br />
+          {{ privacyTexts.responsibleLocation }}
+          <br />
+          {{ privacyTexts.emailLabel }}:
+          <a href="mailto:webdev-acc@proton.me">webdev-acc@proton.me</a>
+        </p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.hostingTitle }}</h2>
+
+        <p>{{ privacyTexts.hostingTextOne }}</p>
+
+        <p>{{ privacyTexts.hostingTextTwo }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.serverLogsTitle }}</h2>
+
+        <p>{{ privacyTexts.serverLogsText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.contactFormTitle }}</h2>
+
+        <p>{{ privacyTexts.contactFormTextOne }}</p>
+
+        <p>{{ privacyTexts.contactFormTextTwo }}</p>
+
+        <p>{{ privacyTexts.contactFormTextThree }}</p>
+
+        <p>{{ privacyTexts.contactFormTextFour }}</p>
+
+        <p>
+          {{ privacyTexts.formspreeInfoText }}
+          <a
+            href="https://formspree.io/legal/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ privacyTexts.formspreeLinkText }}
+          </a>
+          .
+        </p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.emailContactTitle }}</h2>
+
+        <p>{{ privacyTexts.emailContactText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.externalLinksTitle }}</h2>
+
+        <p>{{ privacyTexts.externalLinksText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.cookiesTitle }}</h2>
+
+        <p>{{ privacyTexts.cookiesText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.rightsTitle }}</h2>
+
+        <p>{{ privacyTexts.rightsTextOne }}</p>
+
+        <p>{{ privacyTexts.rightsTextTwo }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.securityTitle }}</h2>
+
+        <p>{{ privacyTexts.securityText }}</p>
+      </article>
+
+      <article class="privacy-policy__section">
+        <h2>{{ privacyTexts.changesTitle }}</h2>
+
+        <p>{{ privacyTexts.changesText }}</p>
+
+        <p>{{ privacyTexts.date }}</p>
+      </article>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</section>

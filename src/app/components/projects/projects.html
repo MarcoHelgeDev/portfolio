@@ -1,1 +1,118 @@
-<p>projects works!</p>
+<section class="projects" id="projects">
+  <div class="projects__inner">
+    <div class="projects__content">
+      <div class="projects__headline">
+        <p>{{ projectTexts.label }}</p>
+        <h2>{{ projectTexts.title }}</h2>
+      </div>
+
+      <p class="projects__intro">
+        {{ projectTexts.intro }}
+      </p>
+
+      <div class="projects__list">
+        @for (project of projects; track project.title; let projectIndex = $index) {
+          <button
+            class="project-row"
+            type="button"
+            (mouseenter)="showPreview(projectIndex)"
+            (mouseleave)="hidePreview()"
+            (click)="openProject(projectIndex)"
+          >
+            <span class="project-row__title">
+              {{ project.title }}
+              <span class="project-row__arrow">↗</span>
+            </span>
+
+            <span class="project-row__techs">
+              @for (tech of project.technologies; track tech.name; let last = $last) {
+                <span>{{ tech.name }}</span>
+
+                @if (!last) {
+                  <span class="project-row__divider">|</span>
+                }
+              }
+            </span>
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (hoveredProject; as project) {
+      <div class="projects__preview">
+        <div class="projects__preview-pattern"></div>
+
+        <img
+          [src]="project.image"
+          [alt]="project.title + ' ' + projectTexts.previewAltSuffix"
+          class="projects__preview-image"
+        />
+      </div>
+    }
+  </div>
+
+  @if (selectedProject; as project) {
+    <div class="project-overlay">
+      <article class="project-modal">
+        <button
+          class="project-modal__close"
+          type="button"
+          [attr.aria-label]="projectTexts.closeAriaLabel"
+          (click)="closeProject()"
+        >
+          ×
+        </button>
+
+        <div class="project-modal__text">
+          <span class="project-modal__number">{{ project.number }}</span>
+
+          <h3>{{ project.title }}</h3>
+
+          <div class="project-modal__description">
+            <h4>{{ projectTexts.modalHeadline }}</h4>
+            <p>{{ project.description }}</p>
+          </div>
+
+          <div class="project-modal__techs">
+            @for (tech of project.technologies; track tech.name) {
+              <span class="project-modal__tech">
+                <span
+                  class="project-modal__tech-icon"
+                  [style.--tech-icon]="'url(' + tech.icon + ')'"
+                  aria-hidden="true"
+                ></span>
+
+                <span>{{ tech.name }}</span>
+              </span>
+            }
+          </div>
+        </div>
+
+        <div class="project-modal__image-area">
+          <img
+            [src]="project.image"
+            [alt]="project.title + ' ' + projectTexts.previewAltSuffix"
+            class="project-modal__image"
+          />
+        </div>
+
+        <div class="project-modal__actions">
+          <div class="project-modal__links">
+            <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">
+              {{ projectTexts.githubLabel }} ↗
+            </a>
+
+            <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
+              {{ projectTexts.liveLabel }} ↗
+            </a>
+          </div>
+
+          <button class="project-modal__next" type="button" (click)="showNextProject()">
+            {{ projectTexts.nextProject }}
+            <span>→</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  }
+</section>

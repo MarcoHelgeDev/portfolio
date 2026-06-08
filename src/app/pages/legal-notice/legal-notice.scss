@@ -1,0 +1,241 @@
+:host {
+  display: block;
+}
+
+.legal-notice {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(55.22deg, #1c1c1c 36.26%, #08463b 93.28%);
+  overflow-x: hidden;
+}
+
+.legal-notice__content {
+  width: min(calc(100% - 64px), 1248px);
+  margin: 0 auto;
+  padding: 149px 0 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.legal-notice__headline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    color: var(--color-primary);
+    font-family: var(--font-fira);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0.04em;
+  }
+}
+
+.legal-notice__text {
+  width: 100%;
+  padding-left: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.legal-notice__imprint {
+  width: 1032px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  h2 {
+    color: var(--color-white);
+    font-family: var(--font-karla);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+.legal-notice__imprint-body {
+  width: 1032px;
+  color: var(--color-primary);
+  font-family: var(--font-karla);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+
+  ul {
+    margin: 0 0 16px;
+    padding-left: 18px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.legal-notice__section {
+  width: 968px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  h2 {
+    color: var(--color-white);
+    font-family: var(--font-karla);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  p {
+    color: var(--color-primary);
+    font-family: var(--font-karla);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+.legal-notice a {
+  color: var(--color-primary);
+  transition: color 125ms ease-in-out;
+
+  &:hover {
+    color: var(--color-white);
+  }
+}
+
+.legal-notice__back {
+  display: none;
+}
+
+:host ::ng-deep app-footer .footer {
+  background-color: transparent;
+}
+
+@media (max-width: 1181px) {
+  .legal-notice__content {
+    width: 390px;
+    max-width: 100%;
+    padding: 180px 0 72px;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .legal-notice__headline {
+    width: 390px;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding-left: 20px;
+
+    h1 {
+      width: 343px;
+      color: var(--color-white);
+      font-size: 32px;
+      line-height: 120%;
+      letter-spacing: 0;
+    }
+  }
+
+  .legal-notice__text {
+    width: 390px;
+    max-width: 100%;
+    padding-left: 20px;
+    gap: 24px;
+  }
+
+  .legal-notice__imprint {
+    width: 343px;
+
+    h2 {
+      width: 343px;
+      font-size: 23px;
+      line-height: 120%;
+    }
+  }
+
+  .legal-notice__imprint-body {
+    width: 343px;
+    color: #02f4bf;
+    font-size: 16px;
+    line-height: 120%;
+  }
+
+  .legal-notice__section {
+    width: 343px;
+    gap: 4px;
+
+    h2 {
+      width: 343px;
+      font-size: 19px;
+      line-height: 120%;
+    }
+
+    p {
+      width: 343px;
+      font-size: 16px;
+      line-height: 120%;
+    }
+  }
+
+  .legal-notice__back {
+    position: absolute;
+    left: calc(50% - 181px);
+    top: 101px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    color: var(--color-white);
+    font-family: var(--font-karla);
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+      color 125ms ease-in-out,
+      transform 125ms ease-in-out;
+
+    &:hover {
+      color: var(--color-primary);
+      transform: translateX(-4px);
+    }
+  }
+
+  :host ::ng-deep app-footer .footer {
+    padding: 28px 0 32px;
+  }
+}
+
+@media (max-width: 390px) {
+  .legal-notice__content,
+  .legal-notice__headline,
+  .legal-notice__text {
+    width: 100%;
+  }
+
+  .legal-notice__headline,
+  .legal-notice__text {
+    padding-left: 16px;
+  }
+
+  .legal-notice__headline h1,
+  .legal-notice__imprint,
+  .legal-notice__imprint h2,
+  .legal-notice__imprint-body,
+  .legal-notice__section,
+  .legal-notice__section h2,
+  .legal-notice__section p {
+    width: calc(100vw - 32px);
+  }
+
+  .legal-notice__back {
+    left: 8px;
+  }
+}

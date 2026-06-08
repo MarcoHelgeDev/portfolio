@@ -1,40 +1,37 @@
 <section class="skills" id="skills">
   <div class="skills__inner">
     <div class="skills__box-area">
-      <p class="skills__label">Technologies</p>
+      <p class="skills__label">{{ skillsTexts.label }}</p>
 
       <article class="skills__card">
-        <h2>Skill Set</h2>
+        <h2>{{ skillsTexts.title }}</h2>
 
         <div class="skills__text-content">
           <p class="skills__description">
-            A short introduction of your skills. Highlight your experience of using different
-            front-end technologies and emphasise your openness to learning and adapting to new
-            technologies. Show how important it is for you to keep up with the rapid changes in web
-            development.
+            {{ skillsTexts.description }}
           </p>
 
           <div class="skills__subtext">
             <h3>
-              You need
-              <span>another skill?</span>
+              {{ skillsTexts.subHeadlineStart }}
+              <span>{{ skillsTexts.subHeadlineHighlight }}</span>
             </h3>
 
-            <p>Feel free to contact me. I look forward to expanding on my previous knowledge.</p>
+            <p>{{ skillsTexts.subText }}</p>
           </div>
         </div>
 
         <a class="skills__button" href="#contact">
           <span class="skills__button-track">
-            <span>Let’s Talk</span>
-            <span>Let’s Talk</span>
-            <span>Let’s Talk</span>
+            <span>{{ skillsTexts.buttonText }}</span>
+            <span>{{ skillsTexts.buttonText }}</span>
+            <span>{{ skillsTexts.buttonText }}</span>
           </span>
         </a>
       </article>
     </div>
 
-    <div class="skills__grid" aria-label="Technology skills">
+    <div class="skills__grid" [attr.aria-label]="skillsTexts.gridAriaLabel">
       <div class="skill">
         <div class="skill__icon-frame">
           <img src="icons/skills/html.svg" alt="" class="skill__icon" />
@@ -91,9 +88,13 @@
         <p class="skill__label-text">REST-API</p>
       </div>
 
-      <button class="skill skill--growth" type="button" aria-label="Show learning interests">
+      <button
+        class="skill skill--growth"
+        type="button"
+        [attr.aria-label]="skillsTexts.growthAriaLabel"
+      >
         <span class="growth-popover" aria-hidden="true">
-          <span class="growth-popover__text">I have a special interest in learning</span>
+          <span class="growth-popover__text">{{ skillsTexts.growthPopover }}</span>
 
           <span class="growth-popover__icons">
             <span class="growth-popover__item">
@@ -111,7 +112,7 @@
           />
         </span>
 
-        <span class="skill__label-text">Growth mindset</span>
+        <span class="skill__label-text">{{ skillsTexts.growthLabel }}</span>
       </button>
     </div>
   </div>

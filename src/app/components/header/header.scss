@@ -120,25 +120,28 @@
 }
 
 .logo__mark {
-  width: 35px;
+  width: 36px;
   height: 48px;
-  display: flex;
-  align-items: flex-start;
   color: var(--color-primary);
-  font-family: var(--font-karla);
+  font-family: var(--font-fira);
   font-size: 58px;
-  font-weight: 800;
-  line-height: 0.78;
-  letter-spacing: -8px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.12em;
+  display: flex;
+  align-items: center;
 }
 
 .logo__text {
+  height: 48px;
+  color: var(--color-white);
+  font-family: var(--font-karla);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 88%;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-karla);
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 0.9;
+  justify-content: center;
   letter-spacing: -0.04em;
 }
 
@@ -168,7 +171,7 @@
   }
 
   .logo {
-    width: 35px;
+    width: 36px;
     height: 48px;
   }
 
@@ -177,7 +180,10 @@
   }
 
   .logo__mark {
+    width: 36px;
+    height: 48px;
     font-size: 58px;
+    line-height: 48px;
   }
 
   .burger-button {
@@ -231,6 +237,7 @@
     border-radius: 30px;
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     gap: 10px;
     background: linear-gradient(55.22deg, #1c1c1c 36.26%, #08463b 93.28%);
     opacity: 0;
@@ -248,7 +255,8 @@
   }
 
   .mobile-menu__inner {
-    width: 84px;
+    width: max-content;
+    min-width: 84px;
     height: 172px;
     display: flex;
     flex-direction: column;
@@ -258,16 +266,18 @@
   }
 
   .mobile-nav {
-    width: 83px;
+    width: max-content;
+    min-width: 84px;
     height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 24px;
 
     a {
-      width: 83px;
+      width: max-content;
+      max-width: 140px;
       height: 24px;
       color: var(--color-white);
       font-family: var(--font-fira);
@@ -276,6 +286,7 @@
       line-height: 24px;
       letter-spacing: -0.03em;
       text-align: center;
+      white-space: nowrap;
       transition: color 125ms ease-in-out;
 
       &:hover {

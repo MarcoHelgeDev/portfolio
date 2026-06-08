@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-about-me',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './about-me.html',
   styleUrl: './about-me.scss',
 })
-export class AboutMe {}
+export class AboutMe {
+  private languageService = inject(LanguageService);
+
+  get aboutTexts() {
+    return this.languageService.currentTexts.aboutMe;
+  }
+}

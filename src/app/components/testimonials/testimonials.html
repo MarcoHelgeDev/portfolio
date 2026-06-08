@@ -1,1 +1,55 @@
-<p>testimonials works!</p>
+<section class="references" id="references">
+  <div class="references__inner">
+    <h2>{{ testimonialTexts.title }}</h2>
+
+    <div class="references__slider">
+      <div class="references__viewport">
+        <div class="references__quote" aria-hidden="true">“</div>
+
+        <div class="references__cards">
+          @for (reference of visibleReferences; track reference.author; let index = $index) {
+            <article class="reference-card" [class.reference-card--active]="index === 1">
+              <p class="reference-card__text">{{ reference.text }}</p>
+
+              <div class="reference-card__author">
+                <span></span>
+                <p>{{ reference.author }}</p>
+              </div>
+            </article>
+          }
+        </div>
+
+        <div class="references__fade"></div>
+      </div>
+
+      <div class="references__controls">
+        <button
+          type="button"
+          [attr.aria-label]="testimonialTexts.previousAriaLabel"
+          (click)="showPreviousReference()"
+        >
+          ←
+        </button>
+
+        <div class="references__dots">
+          @for (reference of references; track reference.author; let index = $index) {
+            <button
+              type="button"
+              [attr.aria-label]="testimonialTexts.dotAriaLabel"
+              [class.is-active]="index === activeIndex"
+              (click)="setActiveReference(index)"
+            ></button>
+          }
+        </div>
+
+        <button
+          type="button"
+          [attr.aria-label]="testimonialTexts.nextAriaLabel"
+          (click)="showNextReference()"
+        >
+          →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

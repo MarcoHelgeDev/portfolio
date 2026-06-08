@@ -1,24 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Language, LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
-  isMenuOpen = false;
-  activeLanguage: 'en' | 'de' = 'en';
+  languageService = inject(LanguageService);
 
-  toggleMenu(): void {
+  isMenuOpen = false;
+
+  get headerTexts() {
+    return this.languageService.currentTexts.header;
+  }
+
+  toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  closeMenu(): void {
+  closeMenu() {
     this.isMenuOpen = false;
   }
 
-  setLanguage(language: 'en' | 'de'): void {
-    this.activeLanguage = language;
+  switchLanguage(language: Language) {
+    this.languageService.switchLanguage(language);
+  }
+
+  switchMobileLanguage(language: Language) {
+    this.languageService.switchLanguage(language);
+    this.closeMenu();
   }
 }

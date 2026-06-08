@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Karla:wght@400;700;800&display=swap');
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --color-bg: #1c1c1c;

@@ -1,1 +1,29 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="footer__inner">
+    <a class="footer__brand" href="#hero" aria-label="Back to start">
+      <span class="footer__logo-mark">M</span>
+
+      <span class="footer__logo-name">
+        <span>Marco-Helge</span>
+        <span>Alsen</span>
+      </span>
+    </a>
+
+    <div class="footer__info">
+      <span>{{ footerTexts.role }}</span>
+      <span>{{ footerTexts.location }}</span>
+    </div>
+
+    <p class="footer__copyright">{{ footerTexts.copyright }}</p>
+
+    <nav class="footer__links" aria-label="Footer navigation">
+      <a href="https://github.com/MarcoHelgeDev" target="_blank" rel="noopener noreferrer"
+        >Github</a
+      >
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:webdev-acc@proton.me">Email</a>
+      <a routerLink="/legal-notice">{{ footerTexts.legalNotice }}</a>
+      <a routerLink="/privacy-policy">{{ footerTexts.privacyPolicy }}</a>
+    </nav>
+  </div>
+</footer>

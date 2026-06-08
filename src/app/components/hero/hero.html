@@ -1,41 +1,45 @@
 <section class="hero">
   <div class="hero__content">
-    <p class="hero__role">Frontend Developer</p>
+    <p class="hero__role">{{ heroTexts.role }}</p>
 
     <h1 class="hero__title">
-      <span>Marco-Helge</span>
-      <span>Alsen</span>
+      <span>{{ heroTexts.firstName }}</span>
+      <span>{{ heroTexts.lastName }}</span>
     </h1>
 
     <div class="hero__buttons">
       <a class="hero-button hero-button--work" href="#projects">
         <span class="hero-button__track">
-          <span>Check my work</span>
-          <span>Check my work</span>
-          <span>Check my work</span>
+          <span>{{ heroTexts.checkWork }}</span>
+          <span>{{ heroTexts.checkWork }}</span>
+          <span>{{ heroTexts.checkWork }}</span>
         </span>
       </a>
 
       <a class="hero-button hero-button--contact" href="#contact">
         <span class="hero-button__track">
-          <span>Contact me</span>
-          <span>Contact me</span>
-          <span>Contact me</span>
+          <span>{{ heroTexts.contactMe }}</span>
+          <span>{{ heroTexts.contactMe }}</span>
+          <span>{{ heroTexts.contactMe }}</span>
         </span>
       </a>
     </div>
   </div>
 
   <div class="hero__left-lateral">
-    <a class="hero__scroll" href="#about" aria-label="Scroll to about me">
+    <a class="hero__scroll" href="#about-me" [attr.aria-label]="heroTexts.scrollAriaLabel">
       <img src="icons/arrow.svg" alt="" class="hero__scroll-arrow" />
     </a>
 
     <div class="hero__left-line"></div>
   </div>
 
-  <aside class="hero__right-lateral" aria-label="Social links">
-    <a class="hero__email" href="mailto:webdev-acc@proton.me" aria-label="Send email">
+  <aside class="hero__right-lateral" [attr.aria-label]="heroTexts.socialAriaLabel">
+    <a
+      class="hero__email"
+      href="mailto:webdev-acc@proton.me"
+      [attr.aria-label]="heroTexts.emailAriaLabel"
+    >
       <span class="hero__email-desktop">webdev-acc&#64;proton.me</span>
 
       <span class="hero__email-mobile">
@@ -48,7 +52,7 @@
     <div class="hero__social-icons">
       <a
         class="hero__social-link"
-        href="https://github.com/example"
+        href="https://github.com/MarcoHelgeDev"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -74,14 +78,14 @@
 
   <div class="hero__ticker" aria-hidden="true">
     <div class="hero__ticker-track">
-      <span>Available for remote work</span>
-      <span>Frontend Developer</span>
-      <span>Based in Kiel</span>
-      <span>Open to work</span>
-      <span>Available for remote work</span>
-      <span>Frontend Developer</span>
-      <span>Based in Kiel</span>
-      <span>Open to work</span>
+      <span>{{ heroTexts.tickerRemote }}</span>
+      <span>{{ heroTexts.tickerRole }}</span>
+      <span>{{ heroTexts.tickerLocation }}</span>
+      <span>{{ heroTexts.tickerOpen }}</span>
+      <span>{{ heroTexts.tickerRemote }}</span>
+      <span>{{ heroTexts.tickerRole }}</span>
+      <span>{{ heroTexts.tickerLocation }}</span>
+      <span>{{ heroTexts.tickerOpen }}</span>
     </div>
   </div>
 </section>

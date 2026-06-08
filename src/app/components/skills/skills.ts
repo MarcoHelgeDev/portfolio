@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-skills',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
-export class Skills {}
+export class Skills {
+  private languageService = inject(LanguageService);
+
+  get skillsTexts() {
+    return this.languageService.currentTexts.skills;
+  }
+}
