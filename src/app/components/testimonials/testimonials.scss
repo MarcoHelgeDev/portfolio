@@ -4,7 +4,7 @@
 
 .references {
   width: 100%;
-  padding: 0 0 96px;
+  padding: 0 0 144px;
   overflow: hidden;
   background-color: var(--color-bg);
 }
@@ -12,7 +12,7 @@
 .references__inner {
   width: 100%;
   max-width: var(--max-width);
-  height: 476px;
+  height: 452px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
   position: relative;
   width: 100%;
   max-width: 1248px;
-  height: 386px;
+  height: 362px;
   margin: 0 auto;
   padding-top: 24px;
   overflow: hidden;
@@ -50,6 +50,8 @@
 }
 
 .references__cards {
+  --card-step: 696px;
+
   position: absolute;
   left: 50%;
   top: 0;
@@ -59,6 +61,19 @@
   align-items: center;
   gap: 64px;
   transform: translateX(-50%);
+  will-change: transform;
+}
+
+.references__cards--animating {
+  transition: transform 360ms ease-in-out;
+}
+
+.references__cards--next {
+  transform: translateX(calc(-50% - var(--card-step)));
+}
+
+.references__cards--previous {
+  transform: translateX(calc(-50% + var(--card-step)));
 }
 
 .reference-card {
@@ -157,7 +172,7 @@
 .references__controls {
   position: absolute;
   left: 50%;
-  top: 346px;
+  top: 322px;
   width: 184px;
   height: 40px;
   display: flex;
@@ -181,11 +196,25 @@
       color 125ms ease-in-out,
       transform 125ms ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: var(--color-primary);
-      transform: scale(1.08);
+    }
+
+    &:disabled {
+      cursor: default;
     }
   }
+}
+
+.references__arrow--previous:hover,
+.references__arrow--previous:focus-visible {
+  transform: translateX(-5px);
+}
+
+.references__arrow--next:hover,
+.references__arrow--next:focus-visible {
+  transform: translateX(5px);
 }
 
 .references__dots {
@@ -201,6 +230,10 @@
     padding: 0;
     background-color: var(--color-white);
     cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
 
     &.is-active {
       background-color: var(--color-primary);
@@ -220,7 +253,7 @@
 
 @media (max-width: 600px) {
   .references {
-    padding: 0 0 72px;
+    padding: 0 0 100px;
   }
 
   .references__inner {
@@ -254,6 +287,8 @@
   }
 
   .references__cards {
+    --card-step: 366px;
+
     top: 24px;
     height: 360px;
     gap: 8px;

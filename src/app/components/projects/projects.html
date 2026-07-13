@@ -60,7 +60,7 @@
           [attr.aria-label]="projectTexts.closeAriaLabel"
           (click)="closeProject()"
         >
-          ×
+          <span aria-hidden="true"></span>
         </button>
 
         <div class="project-modal__text">
@@ -99,17 +99,19 @@
         <div class="project-modal__actions">
           <div class="project-modal__links">
             <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">
-              {{ projectTexts.githubLabel }} ↗
+              <span>{{ projectTexts.githubLabel }}</span>
+              <span class="project-modal__link-arrow" aria-hidden="true">↗</span>
             </a>
 
             <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
-              {{ projectTexts.liveLabel }} ↗
+              <span>{{ projectTexts.liveLabel }}</span>
+              <span class="project-modal__link-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
 
           <button class="project-modal__next" type="button" (click)="showNextProject()">
-            {{ projectTexts.nextProject }}
-            <span>→</span>
+            <span class="project-modal__next-label">{{ projectTexts.nextProject }}</span>
+            <span class="project-modal__next-arrow" aria-hidden="true">→</span>
           </button>
         </div>
       </article>

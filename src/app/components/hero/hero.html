@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero__content">
     <p class="hero__role">{{ heroTexts.role }}</p>
 
@@ -8,7 +8,7 @@
     </h1>
 
     <div class="hero__buttons">
-      <a class="hero-button hero-button--work" href="#projects">
+      <a class="hero-button hero-button--work" routerLink="/" fragment="projects">
         <span class="hero-button__track">
           <span>{{ heroTexts.checkWork }}</span>
           <span>{{ heroTexts.checkWork }}</span>
@@ -16,7 +16,7 @@
         </span>
       </a>
 
-      <a class="hero-button hero-button--contact" href="#contact">
+      <a class="hero-button hero-button--contact" routerLink="/" fragment="contact">
         <span class="hero-button__track">
           <span>{{ heroTexts.contactMe }}</span>
           <span>{{ heroTexts.contactMe }}</span>
@@ -27,7 +27,12 @@
   </div>
 
   <div class="hero__left-lateral">
-    <a class="hero__scroll" href="#about-me" [attr.aria-label]="heroTexts.scrollAriaLabel">
+    <a
+      class="hero__scroll"
+      routerLink="/"
+      fragment="about-me"
+      [attr.aria-label]="heroTexts.scrollAriaLabel"
+    >
       <img src="icons/arrow.svg" alt="" class="hero__scroll-arrow" />
     </a>
 

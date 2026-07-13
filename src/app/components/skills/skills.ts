@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })

@@ -16,6 +16,8 @@ export class Testimonials {
   private languageService = inject(LanguageService);
 
   activeIndex = 1;
+  isAnimating = false;
+  slideDirection: 'previous' | 'next' | null = null;
 
   get testimonialTexts() {
     return this.languageService.currentTexts.testimonials;
@@ -42,14 +44,55 @@ export class Testimonials {
   }
 
   showPreviousReference() {
-    this.activeIndex = this.getPreviousIndex();
+    this.startSlide('previous');
   }
 
   showNextReference() {
-    this.activeIndex = this.getNextIndex();
+    this.startSlide('next');
   }
 
   setActiveReference(index: number) {
-    this.activeIndex = index;
+    if (index === this.activeIndex || this.isAnimating) {
+      return;
+    }
+
+    const direction = index === this.getNextIndex() ? 'next' : 'previous';
+    this.startSlide(direction);
+  }
+
+  isCardActive(index: number) {
+    if (this.slideDirection === 'next') {
+      return index === 2;
+    }
+
+    if (this.slideDirection === 'previous') {
+      return index === 0;
+    }
+
+    return index === 1;
+  }
+
+  finishSlide(event: TransitionEvent) {
+    if (
+      event.target !== event.currentTarget ||
+      event.propertyName !== 'transform' ||
+      !this.slideDirection
+    ) {
+      return;
+    }
+
+    this.activeIndex =
+      this.slideDirection === 'next' ? this.getNextIndex() : this.getPreviousIndex();
+    this.isAnimating = false;
+    this.slideDirection = null;
+  }
+
+  private startSlide(direction: 'previous' | 'next') {
+    if (this.isAnimating) {
+      return;
+    }
+
+    this.slideDirection = direction;
+    this.isAnimating = true;
   }
 }

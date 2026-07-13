@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../services/language';
@@ -13,13 +13,15 @@ type FormspreeResponse = {
   }[];
 };
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 @Component({
   selector: 'app-contact',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
-export class Contact {
+export class Contact implements OnDestroy {
   private formBuilder = inject(FormBuilder);
   private http = inject(HttpClient);
   private languageService = inject(LanguageService);
@@ -30,23 +32,27 @@ export class Contact {
   isSending = false;
   submitMessage = '';
   submitWasSuccessful = false;
+  private feedbackTimer?: ReturnType<typeof setTimeout>;
 
   contactForm = this.formBuilder.nonNullable.group({
     name: this.formBuilder.nonNullable.control('', {
       validators: [Validators.required, Validators.minLength(2)],
-      updateOn: 'blur',
     }),
     email: this.formBuilder.nonNullable.control('', {
-      validators: [Validators.required, Validators.email],
-      updateOn: 'blur',
+      validators: [Validators.required, Validators.email, Validators.pattern(EMAIL_PATTERN)],
     }),
     message: this.formBuilder.nonNullable.control('', {
       validators: [Validators.required, Validators.minLength(10)],
-      updateOn: 'blur',
     }),
     privacy: this.formBuilder.nonNullable.control(false, {
       validators: [Validators.requiredTrue],
     }),
+  });
+
+  private formChangesSubscription = this.contactForm.valueChanges.subscribe(() => {
+    if (this.submitMessage && !this.isSending) {
+      this.clearSubmitFeedback();
+    }
   });
 
   get contactTexts() {
@@ -74,7 +80,7 @@ export class Contact {
       return '';
     }
 
-    if (emailControl.hasError('email')) {
+    if (emailControl.hasError('email') || emailControl.hasError('pattern')) {
       return this.contactTexts.errors.invalidEmail;
     }
 
@@ -91,8 +97,7 @@ export class Contact {
 
   sendMessage() {
     this.wasSubmitted = true;
-    this.submitMessage = '';
-    this.submitWasSuccessful = false;
+    this.clearSubmitFeedback();
 
     if (this.contactForm.invalid || this.isSending) {
       this.contactForm.markAllAsTouched();
@@ -130,26 +135,32 @@ export class Contact {
     if (response.ok === false) {
       this.submitWasSuccessful = false;
       this.submitMessage = this.getFormspreeErrorMessage(response);
+      this.scheduleFeedbackClear();
       return;
     }
 
     this.submitWasSuccessful = true;
     this.submitMessage = this.contactTexts.feedback.success;
 
-    this.contactForm.reset({
-      name: '',
-      email: '',
-      message: '',
-      privacy: false,
-    });
+    this.contactForm.reset(
+      {
+        name: '',
+        email: '',
+        message: '',
+        privacy: false,
+      },
+      { emitEvent: false },
+    );
 
     this.wasSubmitted = false;
+    this.scheduleFeedbackClear();
   }
 
   private handleError(error: { error?: FormspreeResponse }) {
     this.isSending = false;
     this.submitWasSuccessful = false;
     this.submitMessage = this.getFormspreeErrorMessage(error.error);
+    this.scheduleFeedbackClear();
   }
 
   private getFormspreeErrorMessage(response?: FormspreeResponse) {
@@ -160,5 +171,24 @@ export class Contact {
     }
 
     return this.contactTexts.feedback.error;
+  }
+
+  private scheduleFeedbackClear() {
+    this.feedbackTimer = setTimeout(() => this.clearSubmitFeedback(), 5000);
+  }
+
+  private clearSubmitFeedback() {
+    if (this.feedbackTimer) {
+      clearTimeout(this.feedbackTimer);
+      this.feedbackTimer = undefined;
+    }
+
+    this.submitMessage = '';
+    this.submitWasSuccessful = false;
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
+    this.clearSubmitFeedback();
   }
 }

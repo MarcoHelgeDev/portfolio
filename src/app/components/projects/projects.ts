@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { LanguageService } from '../../services/language';
 
 type Technology = {
@@ -22,8 +22,9 @@ type Project = {
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
-export class Projects implements OnDestroy {
+export class Projects implements OnInit, OnDestroy {
   private languageService = inject(LanguageService);
+  private preloadedProjectImages: HTMLImageElement[] = [];
 
   hoveredProjectIndex: number | null = null;
   selectedProjectIndex: number | null = null;
@@ -50,6 +51,10 @@ export class Projects implements OnDestroy {
     }
 
     return this.projects[this.selectedProjectIndex];
+  }
+
+  ngOnInit() {
+    this.preloadImages();
   }
 
   showPreview(projectIndex: number) {
@@ -79,7 +84,26 @@ export class Projects implements OnDestroy {
   }
 
   ngOnDestroy() {
+    this.preloadedProjectImages = [];
     this.unlockPageScroll();
+  }
+
+  private preloadImages() {
+    if (typeof Image === 'undefined') {
+      return;
+    }
+
+    for (const project of this.projects) {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = project.image;
+
+      if (typeof image.decode === 'function') {
+        void image.decode().catch(() => undefined);
+      }
+
+      this.preloadedProjectImages.push(image);
+    }
   }
 
   private lockPageScroll() {

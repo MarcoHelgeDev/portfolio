@@ -6,7 +6,9 @@ export type Language = 'en' | 'de';
   providedIn: 'root',
 })
 export class LanguageService {
-  currentLanguage = signal<Language>('en');
+  private readonly storageKey = 'portfolio-language';
+
+  currentLanguage = signal<Language>(this.getInitialLanguage());
 
   texts = {
     en: {
@@ -35,23 +37,23 @@ export class LanguageService {
         label: 'Who I Am',
         title: 'About me',
         intro:
-          'Hey, I’m Marco. I’m currently retraining as a frontend developer and building my first larger projects with HTML, SCSS, JavaScript, TypeScript and Angular. I like creating clear layouts, small interactions and code that I can understand and improve step by step.',
+          'Hi, I’m Marco. I’m currently completing a professional retraining program in frontend development. In my projects, I work with HTML, SCSS, JavaScript, TypeScript and Angular. I care about clear interfaces, thoughtful interactions and code I can understand and improve.',
         location:
-          'I live near Kiel and I’m open to remote work. I enjoy focused teamwork, clear communication and honest feedback, because that helps me improve the most.',
+          'I live near Kiel and I’m open to remote work. In a team, I value clear communication, honest feedback and a respectful way of working together.',
         mindset:
-          'Right now my main focus is frontend development with Angular and TypeScript. I have also worked with Vue, which helps me compare frontend concepts across different frameworks.',
+          'My current focus is Angular, TypeScript and responsive web interfaces. I have also worked with Vue and gained experience with different approaches used by modern frontend frameworks.',
         problemSolving:
-          'When I get stuck, I try to break the problem into smaller parts, test one thing at a time and understand the reason behind the fix instead of just copying a solution.',
+          'When I encounter a technical problem, I break it into smaller steps, test deliberately and make sure I understand why a solution works instead of simply copying code.',
       },
       skills: {
         label: 'Technologies',
         title: 'Skill Set',
         description:
-          'These are the technologies I have worked with during my training and my portfolio projects. My focus is on responsive layouts, readable code and getting more confident with Angular, TypeScript and frontend structure.',
-        subHeadlineStart: 'You need',
+          'I have gained practical experience with these technologies during my retraining and in my own projects. My focus is on responsive interfaces, readable code, Angular and TypeScript.',
+        subHeadlineStart: 'Looking for',
         subHeadlineHighlight: 'another skill?',
         subText:
-          'Feel free to contact me. I’m still learning, but I’m motivated to grow with every real project.',
+          'I enjoy learning new technologies. If my profile could be a good fit for your team, I would be happy to hear from you.',
         buttonText: 'Let’s Talk',
         gridAriaLabel: 'Technology skills',
         growthAriaLabel: 'Show learning interests',
@@ -62,7 +64,7 @@ export class LanguageService {
         label: 'Portfolio',
         title: 'Featured Projects',
         intro:
-          'Here you can find a few projects I built during my training. Open a project to see what it does and which technologies I used.',
+          'Here you can find a selection of projects from my retraining. Open a project to learn more about its features and the technologies behind it.',
         modalHeadline: 'What is this project about?',
         closeAriaLabel: 'Close project details',
         nextProject: 'Next project',
@@ -74,8 +76,8 @@ export class LanguageService {
             number: '01',
             title: 'Join',
             description:
-              'A task manager based on the Kanban idea. The project helped me practise Angular, components, forms, routing and working with structured data.',
-            image: 'images/projects/join.png',
+              'A Kanban-based task manager that I developed as part of a team. I worked with Angular components, forms, routing and structured data.',
+            image: 'images/projects/join.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev',
             liveUrl: 'https://example.com',
             technologies: [
@@ -90,8 +92,8 @@ export class LanguageService {
             number: '02',
             title: 'Sharky',
             description:
-              'A 2D underwater game built with object-oriented JavaScript. In this project I practised classes, canvas, collision checks, keyboard control and game logic.',
-            image: 'images/projects/sharky.png',
+              'A 2D underwater game built with object-oriented JavaScript and Canvas. It includes classes, collision detection, keyboard controls and custom game logic.',
+            image: 'images/projects/sharky.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/sharky',
             liveUrl: 'https://marco-helgealsen.developerakademie.net/sharky/',
             technologies: [
@@ -104,8 +106,8 @@ export class LanguageService {
             number: '03',
             title: 'Pokedex',
             description:
-              'A small Pokédex app that fetches data from a REST API. I used it to practise asynchronous JavaScript, rendering cards, search logic and a detail dialog.',
-            image: 'images/projects/pokedex.png',
+              'A Pokédex app that loads data asynchronously from a REST API. It features dynamically rendered cards, search functionality and a detailed Pokémon view.',
+            image: 'images/projects/pokedex.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/pokedex',
             liveUrl: 'https://marco-helgealsen.developerakademie.net/pokedex/',
             technologies: [
@@ -140,11 +142,11 @@ export class LanguageService {
       contact: {
         label: 'Contact me',
         title: 'Let’s work together',
-        problemHeadline: 'Got a problem to solve?',
+        problemHeadline: 'Looking for frontend support?',
         description:
-          'I’m looking for a junior frontend position where I can keep learning, contribute to real projects and grow step by step as a developer.',
-        question: 'Looking for a junior frontend developer? ',
-        talkLink: 'Let’s talk!',
+          'I’m looking for a junior frontend position where I can contribute my skills, work on real projects and continue developing professionally.',
+        question: 'Think I could be a good fit for your team? ',
+        talkLink: 'Let’s talk.',
         nameLabel: 'What’s your name?',
         namePlaceholder: 'Your name',
         emailLabel: 'What’s your email?',
@@ -309,23 +311,23 @@ export class LanguageService {
         label: 'Das bin ich',
         title: 'Über mich',
         intro:
-          'Hey, ich bin Marco. Ich mache aktuell eine Umschulung zum Frontend-Entwickler und baue meine ersten größeren Projekte mit HTML, SCSS, JavaScript, TypeScript und Angular. Mir macht es Spaß, klare Layouts, kleine Interaktionen und Code zu bauen, den ich wirklich verstehe und Schritt für Schritt verbessern kann.',
+          'Hey, ich bin Marco. Aktuell absolviere ich eine Umschulung zum Frontend-Entwickler. In meinen Projekten arbeite ich mit HTML, SCSS, JavaScript, TypeScript und Angular. Besonders wichtig sind mir übersichtliche Oberflächen, sinnvolle Interaktionen und Code, den ich nachvollziehen und gezielt weiterentwickeln kann.',
         location:
-          'Ich komme aus der Nähe von Kiel und bin offen für Remote-Arbeit. Am liebsten arbeite ich in einem Umfeld, in dem man ehrlich kommuniziert, sich gegenseitig Feedback gibt und gemeinsam sauber an Lösungen arbeitet.',
+          'Ich lebe in der Nähe von Kiel und bin offen für Remote-Arbeit. Im Team schätze ich klare Absprachen, ehrliches Feedback und einen respektvollen Umgang.',
         mindset:
-          'Mein aktueller Fokus liegt auf Angular, TypeScript und responsive Frontend-Umsetzung. Zusätzlich habe ich mit Vue gearbeitet und kann Frontend-Konzepte dadurch besser zwischen verschiedenen Frameworks vergleichen.',
+          'Mein Schwerpunkt liegt auf Angular, TypeScript und responsiven Weboberflächen. Außerdem habe ich bereits mit Vue gearbeitet und dadurch verschiedene Ansätze moderner Frontend-Frameworks kennengelernt.',
         problemSolving:
-          'Wenn ich bei einem Problem hängen bleibe, zerlege ich es in kleinere Schritte, teste gezielt und versuche zu verstehen, warum eine Lösung funktioniert, statt nur Code zu übernehmen.',
+          'Bei technischen Problemen gehe ich strukturiert vor: Ich zerlege sie in kleinere Schritte, teste gezielt und möchte verstehen, warum eine Lösung funktioniert – statt Code einfach nur zu übernehmen.',
       },
       skills: {
         label: 'Technologien',
         title: 'Skill Set',
         description:
-          'Das sind die Technologien, mit denen ich in meiner Umschulung und in meinen bisherigen Projekten gearbeitet habe. Mein Schwerpunkt liegt auf responsive Layouts, verständlichem Code und mehr Sicherheit in Angular, TypeScript und Frontend-Struktur.',
-        subHeadlineStart: 'Du brauchst',
-        subHeadlineHighlight: 'noch einen Skill?',
+          'Mit diesen Technologien habe ich während meiner Umschulung und in eigenen Projekten praktisch gearbeitet. Mein Schwerpunkt liegt auf responsiven Oberflächen, verständlichem Code sowie Angular und TypeScript.',
+        subHeadlineStart: 'Du suchst',
+        subHeadlineHighlight: 'noch etwas anderes?',
         subText:
-          'Melde dich gerne bei mir. Ich lerne noch, aber ich bin motiviert, mit jedem echten Projekt besser zu werden.',
+          'In neue Technologien arbeite ich mich gerne ein. Wenn mein Profil zu deinem Team passt, freue ich mich über eine Nachricht.',
         buttonText: 'Kontakt',
         gridAriaLabel: 'Technologie-Skills',
         growthAriaLabel: 'Lerninteressen anzeigen',
@@ -336,7 +338,7 @@ export class LanguageService {
         label: 'Portfolio',
         title: 'Projekte',
         intro:
-          'Hier findest du einige Projekte von mir. Öffne ein Projekt, um zu sehen, was es macht und welche Technologien ich dafür verwendet habe.',
+          'Hier findest du eine Auswahl meiner Projekte. Öffne ein Projekt, um mehr über die Funktionen und die eingesetzten Technologien zu erfahren.',
         modalHeadline: 'Worum geht es in diesem Projekt?',
         closeAriaLabel: 'Projekt-Details schließen',
         nextProject: 'Nächstes Projekt',
@@ -348,8 +350,8 @@ export class LanguageService {
             number: '01',
             title: 'Join',
             description:
-              'Ein Task Manager nach dem Kanban-Prinzip. In diesem Projekt habe ich Angular, Komponenten, Formulare, Routing und den Umgang mit strukturierten Daten geübt.',
-            image: 'images/projects/join.png',
+              'Ein Task-Manager nach dem Kanban-Prinzip, den ich im Team entwickelt habe. Dabei habe ich mit Angular-Komponenten, Formularen, Routing und strukturierten Daten gearbeitet.',
+            image: 'images/projects/join.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev',
             liveUrl: 'https://example.com',
             technologies: [
@@ -364,8 +366,8 @@ export class LanguageService {
             number: '02',
             title: 'Sharky',
             description:
-              'Ein 2D-Unterwasser-Spiel mit objektorientiertem JavaScript. Hier habe ich Klassen, Canvas, Kollisionsabfragen, Tastatursteuerung und Spiellogik geübt.',
-            image: 'images/projects/sharky.png',
+              'Ein 2D-Unterwasserspiel, das ich mit objektorientiertem JavaScript und Canvas umgesetzt habe. Es verwendet Klassen, Kollisionsabfragen, Tastatursteuerung und eigene Spiellogik.',
+            image: 'images/projects/sharky.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/sharky',
             liveUrl: 'https://marco-helgealsen.developerakademie.net/sharky/',
             technologies: [
@@ -378,8 +380,8 @@ export class LanguageService {
             number: '03',
             title: 'Pokedex',
             description:
-              'Eine kleine Pokédex-App mit REST API. Dabei habe ich asynchrones JavaScript, das Rendern von Karten, Suchlogik und einen Detaildialog geübt.',
-            image: 'images/projects/pokedex.png',
+              'Eine Pokédex-App, die Daten asynchron aus einer REST API lädt. Sie bietet dynamisch gerenderte Karten, eine Suche und eine detaillierte Pokémon-Ansicht.',
+            image: 'images/projects/pokedex.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/pokedex',
             liveUrl: 'https://marco-helgealsen.developerakademie.net/pokedex/',
             technologies: [
@@ -413,12 +415,12 @@ export class LanguageService {
       },
       contact: {
         label: 'Kontakt',
-        title: 'Lass uns zusammen arbeiten',
-        problemHeadline: 'Hast du ein Problem zu lösen?',
+        title: 'Lass uns zusammenarbeiten',
+        problemHeadline: 'Du suchst Verstärkung im Frontend?',
         description:
-          'Ich suche eine Junior-Stelle im Frontend, in der ich weiter lernen, an echten Projekten mitarbeiten und Schritt für Schritt als Entwickler wachsen kann.',
-        question: 'Du suchst einen Junior Frontend-Entwickler? ',
-        talkLink: 'Lass uns sprechen!',
+          'Ich suche eine Junior-Position im Frontend, in der ich mein Wissen einbringen, an echten Projekten mitarbeiten und mich fachlich weiterentwickeln kann.',
+        question: 'Mein Profil passt zu deinem Team? ',
+        talkLink: 'Dann lass uns sprechen!',
         nameLabel: 'Wie heißt du?',
         namePlaceholder: 'Dein Name',
         emailLabel: 'Wie lautet deine E-Mail?',
@@ -563,6 +565,13 @@ export class LanguageService {
 
   switchLanguage(language: Language) {
     this.currentLanguage.set(language);
+    this.updateDocumentLanguage(language);
+
+    try {
+      localStorage.setItem(this.storageKey, language);
+    } catch {
+      // The language still switches when storage is unavailable.
+    }
   }
 
   isEnglish() {
@@ -575,5 +584,27 @@ export class LanguageService {
 
   get currentTexts() {
     return this.texts[this.currentLanguage()];
+  }
+
+  private getInitialLanguage(): Language {
+    try {
+      const savedLanguage = localStorage.getItem(this.storageKey);
+
+      if (savedLanguage === 'en' || savedLanguage === 'de') {
+        this.updateDocumentLanguage(savedLanguage);
+        return savedLanguage;
+      }
+    } catch {
+      // Fall back to English when storage is unavailable.
+    }
+
+    this.updateDocumentLanguage('en');
+    return 'en';
+  }
+
+  private updateDocumentLanguage(language: Language) {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = language;
+    }
   }
 }

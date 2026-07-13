@@ -19,7 +19,7 @@
   left: 50%;
   top: 50%;
   z-index: 2;
-  width: min(100%, 1000px);
+  width: min(calc(100% - 192px), 1248px);
   min-height: 268px;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
   width: 100%;
   color: var(--color-text);
   font-family: var(--font-karla);
-  font-size: clamp(76px, 6.4vw, 104px);
+  font-size: clamp(96px, 8.9vw, 128px);
   font-weight: 700;
   line-height: 100%;
   letter-spacing: -0.02em;
@@ -92,30 +92,33 @@
 
 .hero-button__track {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: max-content;
+  inset: 0 auto 0 0;
+  width: 300%;
   display: flex;
   align-items: center;
-  gap: 72px;
-  transform: translate(-50%, -50%);
+  transform: translateX(0);
 
   span {
+    width: calc(100% / 3);
+    flex: 0 0 calc(100% / 3);
     color: currentColor;
     font-family: var(--font-karla);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 120%;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.hero-button:hover {
+.hero-button:hover,
+.hero-button:focus-visible {
   border-color: var(--color-primary);
   color: var(--color-primary);
 
   .hero-button__track {
-    left: 0;
     animation: heroButtonMove 1800ms linear infinite;
   }
 }
@@ -174,7 +177,7 @@
   height: 22px;
   color: var(--color-white);
   font-family: var(--font-karla);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 120%;
   display: flex;
@@ -185,7 +188,8 @@
   transform-origin: center;
   transition: color 125ms ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--color-primary);
   }
 }
@@ -228,7 +232,8 @@
   justify-content: center;
   align-items: center;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     .hero__social-icon {
       filter: brightness(0) invert(1);
     }
@@ -314,10 +319,12 @@
 }
 
 .hero__ticker-track {
+  --ticker-gap: 56px;
+
   width: max-content;
   display: flex;
   align-items: center;
-  gap: 56px;
+  gap: var(--ticker-gap);
   white-space: nowrap;
   animation: tickerMove 24s linear infinite;
 
@@ -345,11 +352,11 @@
 
 @keyframes heroButtonMove {
   from {
-    transform: translate(0, -50%);
+    transform: translateX(0);
   }
 
   to {
-    transform: translate(-50%, -50%);
+    transform: translateX(calc(-100% / 3));
   }
 }
 
@@ -359,7 +366,7 @@
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - var(--ticker-gap) / 2));
   }
 }
 
@@ -378,8 +385,8 @@
   .hero {
     --hero-side-position: 16px;
 
-    height: 844px;
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
     max-height: none;
   }
 
@@ -398,7 +405,7 @@
 
   .hero__title {
     width: 366px;
-    font-size: 54px;
+    font-size: 62px;
     white-space: normal;
 
     span {
@@ -426,10 +433,8 @@
   }
 
   .hero-button__track {
-    gap: 64px;
-
     span {
-      font-size: 15px;
+      font-size: 18px;
     }
   }
 
@@ -482,7 +487,7 @@
   }
 
   .hero__ticker-track {
-    gap: 40px;
+    --ticker-gap: 40px;
 
     span {
       font-size: 24px;
@@ -501,7 +506,7 @@
 
   .hero__title {
     width: 100%;
-    font-size: 50px;
+    font-size: clamp(48px, 15.9vw, 62px);
   }
 
   .hero__buttons {

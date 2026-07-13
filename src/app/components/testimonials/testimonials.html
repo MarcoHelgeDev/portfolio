@@ -6,9 +6,15 @@
       <div class="references__viewport">
         <div class="references__quote" aria-hidden="true">“</div>
 
-        <div class="references__cards">
+        <div
+          class="references__cards"
+          [class.references__cards--animating]="isAnimating"
+          [class.references__cards--next]="slideDirection === 'next'"
+          [class.references__cards--previous]="slideDirection === 'previous'"
+          (transitionend)="finishSlide($event)"
+        >
           @for (reference of visibleReferences; track reference.author; let index = $index) {
-            <article class="reference-card" [class.reference-card--active]="index === 1">
+            <article class="reference-card" [class.reference-card--active]="isCardActive(index)">
               <p class="reference-card__text">{{ reference.text }}</p>
 
               <div class="reference-card__author">
@@ -24,8 +30,10 @@
 
       <div class="references__controls">
         <button
+          class="references__arrow references__arrow--previous"
           type="button"
           [attr.aria-label]="testimonialTexts.previousAriaLabel"
+          [disabled]="isAnimating"
           (click)="showPreviousReference()"
         >
           ←
@@ -37,14 +45,17 @@
               type="button"
               [attr.aria-label]="testimonialTexts.dotAriaLabel"
               [class.is-active]="index === activeIndex"
+              [disabled]="isAnimating"
               (click)="setActiveReference(index)"
             ></button>
           }
         </div>
 
         <button
+          class="references__arrow references__arrow--next"
           type="button"
           [attr.aria-label]="testimonialTexts.nextAriaLabel"
+          [disabled]="isAnimating"
           (click)="showNextReference()"
         >
           →

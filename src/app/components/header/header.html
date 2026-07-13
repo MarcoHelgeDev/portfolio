@@ -20,19 +20,16 @@
       </div>
 
       <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#about-me">{{ headerTexts.aboutMe }}</a>
-        <a href="#skills">{{ headerTexts.skills }}</a>
-        <a href="#projects">{{ headerTexts.projects }}</a>
+        <a routerLink="/" fragment="about-me">{{ headerTexts.aboutMe }}</a>
+        <a routerLink="/" fragment="skills">{{ headerTexts.skills }}</a>
+        <a routerLink="/" fragment="projects">{{ headerTexts.projects }}</a>
       </nav>
     </div>
 
     <a class="logo" routerLink="/" aria-label="Back to start" (click)="closeMenu()">
-      <span class="logo__mark">M</span>
-
-      <span class="logo__text">
-        <span>Marco-Helge</span>
-        <span>Alsen</span>
-      </span>
+      <img class="logo__image logo__image--filled" src="icons/logo.svg" alt="" />
+      <img class="logo__image logo__image--outline" src="icons/logo-outline.svg" alt="" />
+      <img class="logo__mark" src="icons/logo-mark.svg" alt="" />
     </a>
 
     <button
@@ -50,9 +47,9 @@
     <div class="mobile-menu" [class.is-open]="isMenuOpen">
       <div class="mobile-menu__inner">
         <nav class="mobile-nav" aria-label="Mobile navigation">
-          <a href="#about-me" (click)="closeMenu()">{{ headerTexts.aboutMe }}</a>
-          <a href="#skills" (click)="closeMenu()">{{ headerTexts.skills }}</a>
-          <a href="#projects" (click)="closeMenu()">{{ headerTexts.projects }}</a>
+          <a routerLink="/" fragment="about-me" (click)="closeMenu()">{{ headerTexts.aboutMe }}</a>
+          <a routerLink="/" fragment="skills" (click)="closeMenu()">{{ headerTexts.skills }}</a>
+          <a routerLink="/" fragment="projects" (click)="closeMenu()">{{ headerTexts.projects }}</a>
         </nav>
 
         <div class="language-toggle">

@@ -58,7 +58,8 @@
       transition: opacity 125ms ease-in-out;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: var(--color-primary);
 
       &::after {
@@ -108,41 +109,52 @@
       color: var(--color-white);
       font-weight: 700;
     }
+
+    &:not(.is-active):hover,
+    &:not(.is-active):focus-visible {
+      color: var(--color-white);
+    }
   }
 }
 
 .logo {
-  height: 48px;
+  position: relative;
+  width: 128px;
+  height: 40px;
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  color: var(--color-white);
+  align-items: center;
+
+  &:hover,
+  &:focus-visible {
+    .logo__image--filled {
+      opacity: 0;
+    }
+
+    .logo__image--outline {
+      opacity: 1;
+    }
+  }
+}
+
+.logo__image {
+  position: absolute;
+  inset: 0;
+  width: 128px;
+  height: 40px;
+  object-fit: contain;
+  transition: opacity 160ms ease-in-out;
+}
+
+.logo__image--filled {
+  opacity: 1;
+}
+
+.logo__image--outline {
+  opacity: 0;
 }
 
 .logo__mark {
-  width: 36px;
-  height: 48px;
-  color: var(--color-primary);
-  font-family: var(--font-fira);
-  font-size: 58px;
-  font-weight: 700;
-  line-height: 48px;
-  letter-spacing: -0.12em;
-  display: flex;
-  align-items: center;
-}
-
-.logo__text {
-  height: 48px;
-  color: var(--color-white);
-  font-family: var(--font-karla);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 88%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  letter-spacing: -0.04em;
+  display: none;
 }
 
 .burger-button,
@@ -171,19 +183,19 @@
   }
 
   .logo {
-    width: 36px;
+    width: 35.17px;
     height: 48px;
   }
 
-  .logo__text {
+  .logo__image {
     display: none;
   }
 
   .logo__mark {
-    width: 36px;
+    width: 35.17px;
     height: 48px;
-    font-size: 58px;
-    line-height: 48px;
+    display: block;
+    object-fit: contain;
   }
 
   .burger-button {
@@ -204,7 +216,7 @@
       width: 32px;
       height: 2px;
       border-radius: 100px;
-      background-color: var(--color-primary);
+      background-color: var(--color-white);
       transition:
         transform 160ms ease-in-out,
         opacity 160ms ease-in-out;
@@ -212,6 +224,7 @@
 
     &.is-open {
       span:nth-child(1) {
+        background-color: var(--color-primary);
         transform: translateY(9px) rotate(45deg);
       }
 
@@ -220,8 +233,14 @@
       }
 
       span:nth-child(3) {
+        background-color: var(--color-primary);
         transform: translateY(-9px) rotate(-45deg);
       }
+    }
+
+    &:hover span,
+    &:focus-visible span {
+      background-color: var(--color-primary);
     }
   }
 
@@ -289,7 +308,8 @@
       white-space: nowrap;
       transition: color 125ms ease-in-out;
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         color: var(--color-primary);
       }
     }

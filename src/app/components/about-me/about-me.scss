@@ -4,7 +4,7 @@
 
 .about-me {
   width: 100%;
-  padding: 144px 0 96px;
+  padding: 144px 0;
   overflow: hidden;
   background-color: var(--color-bg);
 }
@@ -43,6 +43,8 @@
       transparent 26px,
       transparent 38px
     );
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
@@ -53,10 +55,8 @@
   height: 568px;
   border-radius: 30px;
   overflow: hidden;
-  background-image: url('/images/about-me.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center;
   filter: grayscale(1) contrast(1.05);
 }
 
@@ -90,9 +90,9 @@
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  gap: 32px;
+  gap: 40px;
   background: rgba(61, 207, 182, 0.1);
   backdrop-filter: blur(2px);
 
@@ -115,27 +115,28 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 24px;
+  min-height: 372px;
+  gap: 32px;
 }
 
 .about-me__intro {
   width: 100%;
-  min-height: unset;
+  min-height: 88px;
   color: var(--color-white);
   font-family: var(--font-karla);
   font-size: 18px;
   font-weight: 400;
-  line-height: 130%;
-  text-align: left;
+  line-height: 120%;
+  text-align: justify;
 }
 
 .about-me__highlights {
   width: 100%;
-  min-height: unset;
+  min-height: 252px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 18px;
+  gap: 16px;
 }
 
 .about-me__highlight {
@@ -150,7 +151,7 @@
     font-family: var(--font-karla);
     font-size: 18px;
     font-weight: 400;
-    line-height: 130%;
+    line-height: 120%;
     transition: color 125ms ease-in-out;
   }
 
@@ -214,12 +215,12 @@
 
 @media (max-width: 900px) {
   .about-me {
-    padding: 100px 0 72px;
+    padding: 100px 0;
   }
 
   .about-me__inner {
     width: 358px;
-    gap: 64px;
+    gap: 40px;
   }
 
   .about-me__photo-wrapper {
@@ -243,6 +244,7 @@
 
   .about-me__content {
     width: 358px;
+    min-height: 661px;
     gap: 16px;
   }
 
@@ -256,35 +258,36 @@
 
   .about-me__card {
     width: 358px;
-    min-height: unset;
+    min-height: 624px;
     padding: 27px 32px;
     justify-content: flex-start;
     gap: 32px;
 
     h2 {
       width: 100%;
-      height: auto;
-      font-size: 56px;
-      line-height: 100%;
+      min-height: 45px;
+      font-size: clamp(44px, 14vw, 56px);
+      line-height: 80%;
     }
   }
 
   .about-me__text-content {
     width: 298px;
+    min-height: 493px;
     gap: 24px;
   }
 
   .about-me__intro {
     width: 298px;
-    min-height: unset;
+    min-height: 114px;
     font-size: 16px;
-    line-height: 130%;
+    line-height: 120%;
   }
 
   .about-me__highlights {
     width: 298px;
-    min-height: unset;
-    gap: 26px;
+    min-height: 355px;
+    gap: 16px;
   }
 
   .about-me__highlight {
@@ -296,7 +299,7 @@
     p {
       width: 242px;
       font-size: 16px;
-      line-height: 130%;
+      line-height: 120%;
     }
   }
 }
@@ -334,5 +337,10 @@
 
   .about-me__highlight p {
     width: auto;
+  }
+
+  .about-me__card h2 {
+    overflow-wrap: anywhere;
+    font-size: clamp(44px, 14.36vw, 56px);
   }
 }
