@@ -737,6 +737,7 @@
   .project-modal__actions {
     position: static;
     order: 3;
+    flex: 1 0 auto;
     width: 100%;
     margin-top: 32px;
     display: flex;
@@ -767,12 +768,28 @@
 
   .project-modal__next {
     align-self: flex-end;
+    flex: none;
+    width: 139px;
     height: 40px;
+    margin-top: auto;
+    padding: 0;
     font-size: 16px;
     gap: 8px;
 
-    span {
+    .project-modal__next-label {
+      width: 91px;
+      font-size: 16px;
+      line-height: 120%;
+      white-space: nowrap;
+    }
+
+    .project-modal__next-arrow {
+      width: 40px;
+      height: 40px;
       font-size: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

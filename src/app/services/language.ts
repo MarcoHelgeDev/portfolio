@@ -95,7 +95,7 @@ export class LanguageService {
               'A 2D underwater game built with object-oriented JavaScript and Canvas. It includes classes, collision detection, keyboard controls and custom game logic.',
             image: 'images/projects/sharky.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/sharky',
-            liveUrl: 'https://marco-helgealsen.developerakademie.net/sharky/',
+            liveUrl: 'https://sharky.marco-helge.de',
             technologies: [
               { name: 'HTML', icon: 'icons/skills/html.svg' },
               { name: 'CSS', icon: 'icons/skills/css.svg' },
@@ -109,7 +109,7 @@ export class LanguageService {
               'A Pokédex app that loads data asynchronously from a REST API. It features dynamically rendered cards, search functionality and a detailed Pokémon view.',
             image: 'images/projects/pokedex.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/pokedex',
-            liveUrl: 'https://marco-helgealsen.developerakademie.net/pokedex/',
+            liveUrl: 'https://pokedex.marco-helge.de',
             technologies: [
               { name: 'HTML', icon: 'icons/skills/html.svg' },
               { name: 'CSS', icon: 'icons/skills/css.svg' },
@@ -126,8 +126,8 @@ export class LanguageService {
         dotAriaLabel: 'Show reference',
         references: [
           {
-            text: 'Marco worked in a structured way and helped us keep a good overview during the project.',
-            author: 'T.Schulz - Frontend Developer',
+            text: 'I studied with Marco-Helge at Developer Akademie and worked with him on a learning project. As an experienced developer, I can say with confidence that he is an excellent team player. He always understood and applied new principles and development approaches quickly, and his code was consistently clean and well thought out — rework was practically never necessary. Anyone working with him gets a reliable and strong colleague on the team.',
+            author: 'Levgen Bilion - Frontend Developer',
           },
           {
             text: 'Marco was a reliable project partner. He asked questions when something was unclear and kept working until the problem was solved.',
@@ -181,11 +181,7 @@ export class LanguageService {
         title: 'Legal Notice',
         backAriaLabel: 'Back to portfolio',
         imprintTitle: 'Imprint',
-        imprintItems: [
-          'Marco-Helge Alsen',
-          'Address will be added before publishing',
-          'Kiel, Germany',
-        ],
+        imprintItems: ['Marco-Helge Alsen', 'Schmetterlingsweg 15, 24235 Laboe', 'Laboe, Germany'],
         projectName: 'Portfolio',
         emailLabel: 'Email',
         sections: [
@@ -240,8 +236,8 @@ export class LanguageService {
         responsibleTitle: '2. Responsible person',
         responsibleIntro: 'The person responsible for this website is:',
         responsibleName: 'Marco-Helge Alsen',
-        responsibleAddress: 'Address will be added before publishing',
-        responsibleLocation: 'Kiel, Germany',
+        responsibleAddress: 'Schmetterlingsweg 15, 24235 Laboe',
+        responsibleLocation: 'Laboe, Germany',
         emailLabel: 'Email',
         hostingTitle: '3. Hosting',
         hostingTextOne:
@@ -369,7 +365,7 @@ export class LanguageService {
               'Ein 2D-Unterwasserspiel, das ich mit objektorientiertem JavaScript und Canvas umgesetzt habe. Es verwendet Klassen, Kollisionsabfragen, Tastatursteuerung und eigene Spiellogik.',
             image: 'images/projects/sharky.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/sharky',
-            liveUrl: 'https://marco-helgealsen.developerakademie.net/sharky/',
+            liveUrl: 'https://sharky.marco-helge.de',
             technologies: [
               { name: 'HTML', icon: 'icons/skills/html.svg' },
               { name: 'CSS', icon: 'icons/skills/css.svg' },
@@ -383,7 +379,7 @@ export class LanguageService {
               'Eine Pokédex-App, die Daten asynchron aus einer REST API lädt. Sie bietet dynamisch gerenderte Karten, eine Suche und eine detaillierte Pokémon-Ansicht.',
             image: 'images/projects/pokedex.webp',
             githubUrl: 'https://github.com/MarcoHelgeDev/pokedex',
-            liveUrl: 'https://marco-helgealsen.developerakademie.net/pokedex/',
+            liveUrl: 'https://pokedex.marco-helge.de',
             technologies: [
               { name: 'HTML', icon: 'icons/skills/html.svg' },
               { name: 'CSS', icon: 'icons/skills/css.svg' },
@@ -400,8 +396,8 @@ export class LanguageService {
         dotAriaLabel: 'Referenz anzeigen',
         references: [
           {
-            text: 'Marco hat strukturiert gearbeitet und uns geholfen, im Projekt den Überblick zu behalten.',
-            author: 'T.Schulz - Frontend Developer',
+            text: 'Ich habe mit Marco-Helge in der Developer Akademie zusammen studiert und gemeinsam an einem Lernprojekt gearbeitet. Als erfahrener Entwickler kann ich mit Überzeugung sagen, dass er ein hervorragender Teamplayer ist. Er hat neue Prinzipien und Entwicklungsansätze immer schnell verstanden und umgesetzt, und sein Code war stets sauber und durchdacht — Nacharbeiten war praktisch nie nötig. Wer mit ihm zusammenarbeitet, bekommt einen zuverlässigen und starken Kollegen im Team.',
+            author: 'Levgen Bilion - Frontend Developer',
           },
           {
             text: 'Marco war ein zuverlässiger Projektpartner. Wenn etwas unklar war, hat er nachgefragt und weitergemacht, bis das Problem gelöst war.',
@@ -458,8 +454,8 @@ export class LanguageService {
         imprintTitle: 'Angaben gemäß Impressum',
         imprintItems: [
           'Marco-Helge Alsen',
-          'Adresse wird vor Veröffentlichung ergänzt',
-          'Kiel, Deutschland',
+          'Schmetterlingsweg 15, 24235 Laboe',
+          'Laboe, Deutschland',
         ],
         projectName: 'Portfolio',
         emailLabel: 'E-Mail',
@@ -515,8 +511,8 @@ export class LanguageService {
         responsibleTitle: '2. Verantwortliche Person',
         responsibleIntro: 'Verantwortlich für diese Webseite ist:',
         responsibleName: 'Marco-Helge Alsen',
-        responsibleAddress: 'Adresse wird vor Veröffentlichung ergänzt',
-        responsibleLocation: 'Kiel, Deutschland',
+        responsibleAddress: 'Schmetterlingsweg 15, 24235 Laboe',
+        responsibleLocation: 'Laboe, Deutschland',
         emailLabel: 'E-Mail',
         hostingTitle: '3. Hosting',
         hostingTextOne:
