@@ -43,6 +43,14 @@
       transparent 26px,
       transparent 38px
     );
+    opacity: 0;
+    transform: translate(38px, -38px);
+    transition:
+      opacity 180ms ease-in-out,
+      transform 220ms ease-in-out;
+  }
+
+  &:hover::before {
     opacity: 1;
     transform: translate(0, 0);
   }
@@ -233,6 +241,7 @@
       bottom: -24px;
       width: 358px;
       height: 358px;
+      transform: translate(24px, -24px);
     }
   }
 
