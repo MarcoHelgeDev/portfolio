@@ -425,7 +425,7 @@
     h2 {
       width: 358px;
       height: auto;
-      font-size: 56px;
+      font-size: clamp(32px, 10.2vw, 40px);
       line-height: 100%;
       white-space: normal;
     }
