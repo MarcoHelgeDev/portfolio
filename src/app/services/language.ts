@@ -130,8 +130,8 @@ export class LanguageService {
             author: 'Levgen Bilion - Frontend Developer',
           },
           {
-            text: 'Marco was a reliable project partner. He asked questions when something was unclear and kept working until the problem was solved.',
-            author: 'H.Janisch - Team Partner',
+            text: 'Working with Marco on our frontend project was a great experience. He was always there to help when I got stuck and encouraged me when I felt frustrated, which really helped me stay motivated.',
+            author: 'Felix Winkler - Team Partner',
           },
           {
             text: 'Working with Marco in our Developer Akademie group project was very pleasant. He stayed calm, focused and supported the team when things got tricky.',
@@ -400,8 +400,8 @@ export class LanguageService {
             author: 'Levgen Bilion - Frontend Developer',
           },
           {
-            text: 'Marco war ein zuverlässiger Projektpartner. Wenn etwas unklar war, hat er nachgefragt und weitergemacht, bis das Problem gelöst war.',
-            author: 'H.Janisch - Team Partner',
+            text: 'Die Zusammenarbeit mit Marco an unserem Frontend-Projekt war eine großartige Erfahrung. Er war immer da, um mir zu helfen, wenn ich nicht weiterkam, und hat mich ermutigt, wenn ich frustriert war. Das hat mir wirklich geholfen, motiviert zu bleiben.',
+            author: 'Felix Winkler - Team Partner',
           },
           {
             text: 'Die Zusammenarbeit mit Marco im Gruppenprojekt bei der Developer Akademie war angenehm. Er blieb ruhig, fokussiert und hat das Team unterstützt, wenn es schwierig wurde.',
